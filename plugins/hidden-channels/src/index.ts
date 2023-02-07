@@ -6,10 +6,6 @@ import HiddenChannel from "./HiddenChannel";
 
 let patches = [];
 
-const permissions = findByProps("getChannelPermissions", "can");
-const router = findByProps("transitionToGuild");
-const MessagesConnected = findByDisplayName("MessagesConnected", false)
-
 function isHidden(channel: any | undefined) {
     if (channel == undefined) return false;
     if (typeof channel === 'string')
@@ -20,6 +16,10 @@ function isHidden(channel: any | undefined) {
     return permissions.can(constants.Permissions.VIEW_CHANNEL, channel);
 }
 function onLoad() {
+    const permissions = findByProps("getChannelPermissions", "can");
+    const router = findByProps("transitionToGuild");
+    const MessagesConnected = findByDisplayName("MessagesConnected", false);
+    
     patches.push(after("can", permissions, ([permID, channel], res) => {
         if (!channel.realCheck && permID === constants.Permissions.VIEW_CHANNEL) return true;
         return res;
@@ -31,7 +31,7 @@ function onLoad() {
     }));
 
     patches.push(instead("default", MessagesConnected, (args, orig) => {
-        const channel = args[0]?.props?.channel;
+        const channel = args[0]?.channel;
         if (!isHidden(channel)) return orig(args)
         else return React.createElement(HiddenChannel, {channel})
     }))
