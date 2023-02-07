@@ -1,7 +1,7 @@
-import { ReactNative, stylesheet, constants } from "@vendetta/metro/common";
+import { stylesheet, constants } from "@vendetta/metro/common";
 import { findByProps } from "@vendetta/metro";
 
-const {View, Text} = ReactNative;
+const {View, Text} = findByProps("Button", "Text", "View");
 
 const snowflakeUtils = findByProps("extractTimestamp");
 
