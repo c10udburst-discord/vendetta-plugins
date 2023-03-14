@@ -1,5 +1,6 @@
 import { stylesheet, constants } from "@vendetta/metro/common";
 import { findByProps } from "@vendetta/metro";
+import { semanticColors } from '@vendetta/ui';
 
 const {View, Text} = findByProps("Button", "Text", "View");
 
@@ -10,21 +11,18 @@ const MessageStyles = stylesheet.createThemedStyleSheet({
         'flex': 1,
         'alignItems': 'center',
         'justifyContent': 'center',
-        'backgroundColor': constants.ThemeColorMap.BACKGROUND_PRIMARY,
     },
     'title': {
         'fontFamily': constants.Fonts.PRIMARY_SEMIBOLD,
         'fontSize': 24,
-        'backgroundColor':constants.ThemeColorMap.BACKGROUND_PRIMARY,
         'textAlign': 'left',
-        'color': constants.ThemeColorMap.HEADER_PRIMARY,
+        'color': semanticColors.HEADER_PRIMARY,
         'paddingVertical': 25
     },
     'text': {
         'fontSize': 16,
-        'backgroundColor':constants.ThemeColorMap.BACKGROUND_PRIMARY,
         'textAlign': 'justify',
-        'color': constants.ThemeColorMap.HEADER_PRIMARY,
+        'color': semanticColors.HEADER_PRIMARY,
     }
 })
 
