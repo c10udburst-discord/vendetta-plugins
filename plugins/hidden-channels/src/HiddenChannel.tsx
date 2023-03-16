@@ -32,6 +32,8 @@ export default function HiddenChannel({channel}) {
         <Text style={MessageStyles.text}>
             Topic: {channel.topic || "No topic."}
             {"\n\n"}
+            Creation date: {moment(new Date(snowflakeUtils.extractTimestamp(channel.id))).fromNow()}
+            {"\n\n"}
             Last message: {channel.lastMessageId ? moment(new Date(snowflakeUtils.extractTimestamp(channel.lastMessageId))).fromNow() : "No messages."}
             {"\n\n"}
             Last pin: {channel.lastPinTimestamp ? moment(new Date(channel.lastPinTimestamp)).fromNow() : "No pins."}
