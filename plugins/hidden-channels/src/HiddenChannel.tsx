@@ -1,4 +1,4 @@
-import { stylesheet, constants } from "@vendetta/metro/common";
+import { stylesheet, constants, moment } from "@vendetta/metro/common";
 import { findByProps } from "@vendetta/metro";
 import { semanticColors } from '@vendetta/ui';
 
@@ -32,9 +32,9 @@ export default function HiddenChannel({channel}) {
         <Text style={MessageStyles.text}>
             Topic: {channel.topic || "No topic."}
             {"\n\n"}
-            Last message: {channel.lastMessageId ? new Date(snowflakeUtils.extractTimestamp(channel.lastMessageId)).toLocaleString() : "No messages."}
+            Last message: {channel.lastMessageId ? moment(new Date(snowflakeUtils.extractTimestamp(channel.lastMessageId))).fromNow() : "No messages."}
             {"\n\n"}
-            Last pin: {channel.lastPinTimestamp ? (new Date(channel.lastPinTimestamp)).toLocaleString() : "No pins."}
+            Last pin: {channel.lastPinTimestamp ? moment(new Date(channel.lastPinTimestamp)).fromNow() : "No pins."}
         </Text>
     </View>
 }
