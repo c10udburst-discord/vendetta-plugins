@@ -9,7 +9,6 @@ const Permissions = findByProps("getChannelPermissions", "can");
 const Router = findByProps("transitionToGuild");
 const Fetcher = findByProps("stores", "fetchMessages");
 const { ChannelTypes } = findByProps("ChannelTypes");
-const UnreadManager = findByProps("hasUnread");
 const {getChannel} = findByProps("getChannel");
 
 const skipChannels = [
@@ -39,11 +38,6 @@ function onLoad() {
     patches.push(instead("transitionToGuild", Router, (args, orig) => {
         const [_, channel] = args;
         if (!isHidden(channel) && typeof orig === "function") orig(args);
-    }));
-
-    patches.push(after("hasUnreadPins", UnreadManager, ([channel], res) => {
-        if (isHidden(channel)) return false;
-        return res;
     }));
 
     patches.push(instead("fetchMessages", Fetcher, (args, orig) => {
