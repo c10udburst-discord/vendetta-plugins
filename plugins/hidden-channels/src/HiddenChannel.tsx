@@ -29,7 +29,7 @@ const MessageStyles = stylesheet.createThemedStyleSheet({
         'color': semanticColors.HEADER_PRIMARY,
     },
     'dateContainer': {
-        'width': 16,
+        'height': 16,
         'alignSelf': 'baseline'
     }
 })
