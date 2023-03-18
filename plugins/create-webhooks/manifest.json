@@ -1,0 +1,14 @@
+{
+    "name": "Create webhooks",
+    "description": "Create webhooks from the webhook management screen",
+    "authors": [
+        {
+            "name": "cloudburst",
+            "id": "892128204150685769"
+        }
+    ],
+    "main": "src/index.tsx",
+    "vendetta": {
+        "icon": "ic_webhook_24px"
+    }
+}
