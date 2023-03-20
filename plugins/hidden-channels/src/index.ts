@@ -1,4 +1,4 @@
-import { findByDisplayName, findByProps } from "@vendetta/metro";
+import { findByName, findByProps } from "@vendetta/metro";
 import { constants, React } from "@vendetta/metro/common";
 import { instead, after } from "@vendetta/patcher";
 import HiddenChannel from "./HiddenChannel";
@@ -28,7 +28,7 @@ function isHidden(channel: any | undefined) {
     return res;
 }
 function onLoad() {
-    const MessagesConnected = findByDisplayName("MessagesWrapperConnected", false);
+    const MessagesConnected = findByName("MessagesWrapperConnected", false);
     
     patches.push(after("can", Permissions, ([permID, channel], res) => {
         if (!channel?.realCheck && permID === constants.Permissions.VIEW_CHANNEL) return true;
