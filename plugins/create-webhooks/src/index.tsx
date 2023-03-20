@@ -1,4 +1,4 @@
-import { findByDisplayName, findByProps } from "@vendetta/metro";
+import { findByName, findByProps } from "@vendetta/metro";
 import { stylesheet, React, ReactNative, i18n } from "@vendetta/metro/common";
 import { instead} from "@vendetta/patcher";
 
@@ -6,8 +6,8 @@ let patches = [];
 
 const {View} = ReactNative;
 
-const ConnectedWebhooksOverview = findByDisplayName("ConnectedWebhooksOverview", false);
-const Button = findByDisplayName("Button", false).default;
+const ConnectedWebhooksOverview = findByName("ConnectedWebhooksOverview", false);
+const Button = findByName("Button", false).default;
 const { create: createWebhook } = findByProps("update", "create", "fetchForChannel");
 const {getChannel} = findByProps("getChannel");
 
