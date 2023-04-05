@@ -1,0 +1,14 @@
+{
+    "name": "Delete embeds",
+    "description": "Delete message embeds",
+    "authors": [
+        {
+            "name": "cloudburst",
+            "id": "892128204150685769"
+        }
+    ],
+    "main": "src/index.tsx",
+    "vendetta": {
+        "icon": "ic_close_16px"
+    }
+}
