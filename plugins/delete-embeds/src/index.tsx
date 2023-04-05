@@ -1,6 +1,6 @@
 import { findByName, findByProps } from "@vendetta/metro";
 import { i18n, constants } from "@vendetta/metro/common";
-import { after, before, instead} from "@vendetta/patcher";
+import { after, before} from "@vendetta/patcher";
 import { Forms } from "@vendetta/ui/components";
 import { getAssetIDByName as getAssetId } from "@vendetta/ui/assets"
 
@@ -9,7 +9,6 @@ let patches = [];
 
 const ActionSheet = findByProps("openLazy", "hideActionSheet");
 const { FormRow } = Forms;
-const { MessageFlags } = constants;
 const Icon = findByName("Icon");
 const {getCurrentUser} = findByProps("getCurrentUser")
 const {suppressEmbeds} = findByProps("suppressEmbeds");
