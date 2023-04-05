@@ -1,1 +1,1 @@
-{"name":"Delete embeds","description":"Delete message embeds","authors":[{"name":"cloudburst","id":"892128204150685769"}],"main":"index.js","vendetta":{"icon":"ic_close_16px"},"hash":"a4a2bb647647b73fee46539738c11177d30f81260a6819a3841c387006e87300"}
+{"name":"Delete embeds","description":"Adds a msg sheet option to suppress embeds.","authors":[{"name":"cloudburst","id":"892128204150685769"}],"main":"index.js","vendetta":{"icon":"ic_close_16px"},"hash":"a4a2bb647647b73fee46539738c11177d30f81260a6819a3841c387006e87300"}
