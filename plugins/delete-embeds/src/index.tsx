@@ -27,10 +27,11 @@ function onLoad() {
     
                 if (!oldButtons || !message) return
 
-                if (message.embeds.length == 0) return
-
                 const channel = getChannel(message.channel_id)
-                if (getCurrentUser().id !== message.author.id && !Permissions.can(constants.Permissions.MANAGE_MESSAGES, channel)) return
+                if (message.embeds.length == 0 || (getCurrentUser().id !== message.author.id && !Permissions.can(constants.Permissions.MANAGE_MESSAGES, channel))) {
+                    unpatch()
+                    return
+                }
 
                 const label = i18n?.Messages?.WEBHOOK_DELETE_TITLE?.intlMessage?.format({name:"Embed"})
 
