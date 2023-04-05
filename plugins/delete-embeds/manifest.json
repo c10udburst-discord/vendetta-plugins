@@ -1,6 +1,6 @@
 {
     "name": "Delete embeds",
-    "description": "Delete message embeds",
+    "description": "Adds a msg sheet option to suppress embeds.",
     "authors": [
         {
             "name": "cloudburst",
