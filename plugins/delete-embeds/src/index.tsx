@@ -6,11 +6,13 @@ import { getAssetIDByName as getAssetId } from "@vendetta/ui/assets"
 
 let patches = [];
 
-const REST = findByProps("getAPIBaseURL", "patch");
+
 const ActionSheet = findByProps("openLazy", "hideActionSheet");
 const { FormRow } = Forms;
 const { MessageFlags } = constants;
 const Icon = findByName("Icon");
+const {getCurrentUser} = findByProps("getCurrentUser")
+const {suppressEmbeds} = findByProps("suppressEmbeds");
 const Permissions = findByProps("getChannelPermissions", "can");
 const {getChannel} = findByProps("getChannel");
 
@@ -26,9 +28,10 @@ function onLoad() {
     
                 if (!oldButtons || !message) return
 
-                const channel = getChannel(message.channel_id)
+                if (message.embeds.length == 0) return
 
-                if (!Permissions.can(constants.Permissions.MANAGE_MESSAGES, channel)) return
+                const channel = getChannel(message.channel_id)
+                if (getCurrentUser().id !== message.author.id && !Permissions.can(constants.Permissions.MANAGE_MESSAGES, channel)) return
 
                 const label = i18n?.Messages?.WEBHOOK_DELETE_TITLE?.intlMessage?.format({name:"Embed"})
 
@@ -37,12 +40,7 @@ function onLoad() {
                     label={label || "Delete Embed"}
                     leading={<Icon source={getAssetId("ic_close_16px")} />}
                     onPress={() => {
-                        REST.patch({
-                            url: `/channels/${message.channel_id}/messages/${message.id}`,
-                            body: {
-                                flags: message.flags | MessageFlags.SUPPRESS_EMBEDS
-                            }
-                        })
+                        suppressEmbeds(message.channel_id, message.id)
                         ActionSheet.hideActionSheet()
                     }}
                 />]
