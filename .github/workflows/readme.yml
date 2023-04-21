@@ -11,7 +11,7 @@ jobs:
         steps:
             - uses: actions/checkout@v2
 
-            - run: python3 .github/readme.py
+            - run: python3 .github/fix_readme.py
 
             - name: Push
               run: |
