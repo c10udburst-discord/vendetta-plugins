@@ -30,7 +30,7 @@ function onLoad() {
             <Button color="brand" style={Styles.button}
                 text={i18n?.Messages?.WEBHOOK_CREATE || "Create Webhook"}
                 onPress={() => {
-                    createWebhook?.(channel.guild_id, channel.id)
+                    createWebhook?.(channel?.guild_id, channel?.id)
                 }}
             />
         </View>)
