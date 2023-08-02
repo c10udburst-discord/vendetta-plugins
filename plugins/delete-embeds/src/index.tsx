@@ -1,4 +1,4 @@
-import { findByName, findByProps } from "@vendetta/metro";
+import { findByProps } from "@vendetta/metro";
 import { i18n, constants } from "@vendetta/metro/common";
 import { after, before} from "@vendetta/patcher";
 import { Forms } from "@vendetta/ui/components";
@@ -9,8 +9,7 @@ let patches = [];
 
 
 const ActionSheet = findByProps("openLazy", "hideActionSheet");
-const { FormRow } = Forms;
-const Icon = findByName("Icon");
+const { FormRow, FormIcon } = Forms;
 const {getCurrentUser} = findByProps("getCurrentUser")
 const {suppressEmbeds} = findByProps("suppressEmbeds");
 const Permissions = findByProps("getChannelPermissions", "can");
@@ -40,7 +39,7 @@ function onLoad() {
                 buttons.push(
                 <FormRow
                     label={label || "Delete Embed"}
-                    leading={<Icon source={getAssetId("ic_close_16px")} />}
+                    leading={<FormIcon style={{ opacity: 1 }} source={getAssetId("ic_close_16px")} />}
                     onPress={() => {
                         suppressEmbeds(message.channel_id, message.id)
                         ActionSheet.hideActionSheet()
